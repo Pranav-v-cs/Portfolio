@@ -52,15 +52,15 @@ function ProjectCard({
   }
 
   return (
-    <motion.div variants={fadeInItem()}>
+    <motion.div variants={fadeInItem()} className="h-full">
       <div
         ref={cardRef}
-        className="group relative cursor-pointer overflow-hidden rounded-2xl border border-black/10 bg-white/70 shadow-lg shadow-black/5 backdrop-blur-xl transition-all duration-200 hover:border-accent/30 hover:shadow-accent/5 dark:border-white/10 dark:bg-white/[0.04] dark:shadow-black/20"
+        className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/70 shadow-lg shadow-black/5 backdrop-blur-xl transition-all duration-200 hover:border-accent/30 hover:shadow-accent/5 dark:border-white/10 dark:bg-white/[0.04] dark:shadow-black/20"
         style={{ transition: 'transform 0.15s ease-out' }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="relative z-10 p-6">
+        <div className="relative z-10 flex h-full flex-col p-6">
           <div className="mb-3 flex items-center justify-between">
             <span className="text-xs font-mono text-tertiary">
               {String(index + 1).padStart(2, '0')}
@@ -75,7 +75,7 @@ function ProjectCard({
           </div>
           <h3 className="mb-2 text-xl font-semibold text-[#1a1a1a] dark:text-[#f5f5f0]">{title}</h3>
           <p className="mb-4 text-sm leading-relaxed text-secondary">{description}</p>
-          <div className="flex flex-wrap gap-2">
+          <div className="mt-auto flex flex-wrap gap-2">
             {tags.map((tag) => (
               <Badge key={tag}>{tag}</Badge>
             ))}
@@ -129,7 +129,7 @@ export function Projects() {
               ))}
             </TabsList>
             <TabsContent value={category}>
-              <StaggerReveal className="grid gap-8 sm:grid-cols-2">
+              <StaggerReveal className="grid auto-rows-fr gap-8 sm:grid-cols-2">
                 {filtered.map((project, i) => (
                   <ProjectCard key={project.title} {...project} index={i} />
                 ))}

@@ -3,10 +3,12 @@ import { ScrollReveal } from '../effects/ScrollReveal'
 import { skillIcons } from '../../data/portfolio'
 
 const groups = [
+  { label: 'Embedded & IoT', skills: ['Raspberry Pi', 'Arduino', 'ESP32', 'STM32', 'MQTT', 'ROS', 'CMake', 'Jetson Nano Orin'] },
   { label: 'Programming', skills: ['Python', 'Java', 'C++', 'C'] },
   { label: 'Frontend', skills: ['JavaScript', 'React', 'Next.js', 'Tailwind CSS', 'HTML', 'CSS'] },
   { label: 'Backend', skills: ['Node.js', 'Express.js', 'FastAPI', 'Flask', 'Django', 'MySQL', 'SQLite', 'PostgreSQL', 'MongoDB'] },
-  { label: 'AI & Tools', skills: ['OpenCV', 'Git', 'Linux', 'GitHub', 'Figma', 'Shell', 'LMStudio', 'Ollama', 'Vercel', 'Render', 'Railway', 'Docker'] },
+  { label: 'AI & ML', skills: ['PyTorch', 'Scikit-learn', 'OpenCV', 'LMStudio', 'Ollama'] },
+  { label: 'Tools', skills: ['Git', 'Linux', 'GitHub', 'Figma', 'Shell', 'Vercel', 'Render', 'Railway', 'Docker', 'Postman'] },
 ]
 
 function MarqueeRow({ skills, reverse }: { skills: string[]; reverse: boolean }) {
@@ -26,7 +28,10 @@ function MarqueeRow({ skills, reverse }: { skills: string[]; reverse: boolean })
       <div
         className="flex w-max items-center gap-4 py-2"
         style={{
-          animation: `${reverse ? 'marquee-reverse' : 'marquee'} ${12 + skills.length * 2}s linear infinite`,
+          animationName: reverse ? 'marquee-reverse' : 'marquee',
+          animationDuration: `${12 + skills.length * 2}s`,
+          animationTimingFunction: 'linear',
+          animationIterationCount: 'infinite',
           animationPlayState: paused ? 'paused' : 'running',
         }}
       >
